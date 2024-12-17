@@ -79,7 +79,7 @@ Follow these steps to set up and run the project:
 Use the following command to clone the repository:
 ```bash
 git clone https://github.com/your-username/sunspot-forecasting.git
-cd sunspot-forecasting
+cd Sunspot-Time-Series-Forecasting-DNN
 ```
 2. Install the dependencies
 Ensure the required libraries are installed:
@@ -126,3 +126,30 @@ main_model = MainModel(window_size=30)
 model, _ = main_model.build_model()
 model.summary()
 ```
+5. Learning Rate Tuning
+The learning rate is tuned and visualized:
+```bash
+tuning_history = main_model.tuning_learn_rate(model, windowed_dataset, tf.keras.optimizers.SGD(momentum=0.9), loss=tf.keras.losses.Huber())
+plotter.plot_learning_rate(tuning_history)
+```
+6. Model Training and Prediction
+Train the model and generate predictions:
+```bash
+history = main_model.train_model(model, windowed_dataset, tf.keras.optimizers.SGD(learning_rate=0.01, momentum=0.9), loss=tf.keras.losses.Huber(), epochs=600)
+forecast = main_model.predict_model(model, series[SPLIT_TIME-30:-1], window_size=30, batch_size=32)
+```
+7. Results Visualization
+The predictions are visualized and evaluated:
+```bash
+plotter.plot_series(time_val, (series_val, forecast.squeeze()))
+print(tf.keras.metrics.mae(series_val, forecast.squeeze()).numpy())
+```
+---
+
+## Results
+- The project outputs:
+1. Learning Rate Tuning Plot: Visualizes loss over different learning rates.
+2. Forecast Visualization: Actual vs. predicted sunspots on the validation set.
+3. Performance Metric: Mean Absolute Error (MAE).
+- using a `1e-5` learning rate
+- the model got an MAE of `13.765716`
