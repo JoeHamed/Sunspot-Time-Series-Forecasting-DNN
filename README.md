@@ -11,8 +11,7 @@ This project implements a **time series forecasting** model using TensorFlow to 
 4. [How to Run](#how-to-run)  
 5. [Code Walkthrough](#code-walkthrough)  
 6. [Results](#results)  
-7. [Acknowledgments](#acknowledgments)  
-
+7. [Visualization](#Visualization)  
 ---
 
 ## Project Overview
@@ -153,3 +152,16 @@ print(tf.keras.metrics.mae(series_val, forecast.squeeze()).numpy())
 3. Performance Metric: Mean Absolute Error (MAE).
 - using a `1e-5` learning rate
 - the model got an MAE of `13.765716`
+
+---
+
+## Visualization
+
+- Raw Data of Sunspots
+![rawdataplot](https://github.com/user-attachments/assets/b318a2af-497e-4837-923f-846c8b04e685)
+
+- Learning Rate Tuning
+![LearningRateTuning](https://github.com/user-attachments/assets/188006eb-8745-4b96-bd18-0af60b8f697c)
+
+- Predictions Plotted
+![Predictions](https://github.com/user-attachments/assets/5f10c501-1b58-4303-ab9b-a44ce13eb7c0)
