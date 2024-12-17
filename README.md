@@ -41,29 +41,29 @@ pip install tensorflow numpy matplotlib
 ## File Descriptions
 This project contains the following files:
 
-1. MainScript.py
+### 1. MainScript.py
 - The main script that runs the entire pipeline.
 - Key tasks include dataset reading, visualization, model building, learning rate tuning, training, and evaluation.
 
-2. ReadingDataset.py
+### 2. ReadingDataset.py
 - Contains the ReadingDataset class for:
   - Reading the input dataset (CSV file).
   - Converting data into NumPy arrays.
   - Splitting the dataset into training and validation sets.
 
-3. WindowedDataset.py
+### 3. WindowedDataset.py
 - Contains the WindowedDataset class for:
   - Creating a sliding window dataset for training.
   - Shuffling, batching, and optimizing the dataset.
   
-4. MainModel.py
+### 4. MainModel.py
 - Contains the MainModel class for:
   - Building a simple dense neural network.
   - Tuning the learning rate using an exponential scheduler.
   - Training the model.
   - Generating predictions on unseen data.
 
-5. PlotSeries.py
+### 5. PlotSeries.py
 - Contains the PlotSeries class for:
   - Plotting time series data.
   - Visualizing learning rate vs. loss for tuning purposes.
