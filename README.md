@@ -68,3 +68,61 @@ This project contains the following files:
   - Plotting time series data.
   - Visualizing learning rate vs. loss for tuning purposes.
 
+### 6. Sunspots.csv
+- The dataset containing monthly sunspot observations.
+
+---
+## How to Run
+Follow these steps to set up and run the project:
+
+1. Clone the repository
+Use the following command to clone the repository:
+```bash
+git clone https://github.com/your-username/sunspot-forecasting.git
+cd sunspot-forecasting
+```
+2. Install the dependencies
+Ensure the required libraries are installed:
+```bash
+pip install tensorflow numpy matplotlib
+```
+3. Place the dataset
+- Download the Sunspots.csv dataset.
+- Place it in the `data` folder.
+
+4. Run the project
+Execute the main script:
+```bash
+python MainScript.py
+```
+
+---
+
+## Code Walkthrough
+1. Dataset Reading and Splitting
+The `ReadingDataset` class reads the Sunspots.csv file and splits it into training and validation sets:
+```bash
+dataset = ReadingDataset("./data/Sunspots.csv")
+dataset.read_dataset()
+series, time = dataset.convert_np_array()
+time_train, series_train, time_val, series_val = dataset.split_dataset(split_time=3000, series=series, time=time)
+```
+2. Data Visualization
+The `PlotSeries` class visualizes the time series data:
+```bash
+plotter = PlotSeries()
+plotter.plot_series(time, series, xlabel="Month", ylabel="Sunspots")
+```
+3. Data Preparation
+The `WindowedDataset` class prepares the training data using sliding windows:
+```bash
+wd = WindowedDataset(series_train, window_size=30, batch_size=32, buffer_size=1000)
+windowed_dataset = wd.window_dataset()
+```
+4. Model Building
+The `MainModel` class creates a simple dense neural network:
+```bash
+main_model = MainModel(window_size=30)
+model, _ = main_model.build_model()
+model.summary()
+```
