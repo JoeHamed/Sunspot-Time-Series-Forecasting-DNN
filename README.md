@@ -157,11 +157,11 @@ print(tf.keras.metrics.mae(series_val, forecast.squeeze()).numpy())
 
 ## Visualization
 
-- Raw Data of Sunspots
+### - Raw Data of Sunspots
 ![rawdataplot](https://github.com/user-attachments/assets/b318a2af-497e-4837-923f-846c8b04e685)
 
-- Learning Rate Tuning
+### - Learning Rate Tuning
 ![LearningRateTuning](https://github.com/user-attachments/assets/188006eb-8745-4b96-bd18-0af60b8f697c)
 
-- Predictions Plotted
+### - Predictions Plotted
 ![Predictions](https://github.com/user-attachments/assets/5f10c501-1b58-4303-ab9b-a44ce13eb7c0)
